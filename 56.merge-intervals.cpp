@@ -39,7 +39,7 @@
 // @lc code=start
 class Solution {
 public:
-    static int comp(vector<int> &a, vector<int> &b){
+    static bool comp(vector<int> &a, vector<int> &b){
       return a[0]<b[0];
     }
 
