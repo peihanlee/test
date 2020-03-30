@@ -40,13 +40,11 @@ public:
       unordered_map<int,int> table;
 
       for(i=0;i<nums.size();i++){
-        cout<<"i:"<<i<<"num[i]:"<<nums[i]<<"\n";
         if(table[nums[i]]==0){
           left = table[nums[i]-1];
           right = table[nums[i]+1];
           sum = left+right+1;
           table[nums[i]]= table[nums[i]-left]= table[nums[i]+right] = sum;          
-          cout<<nums[i]<<","<<nums[i]-left<<","<<nums[i]+right<<",("<<sum<<")\n";
           longest = max(longest,sum);
         }
       }
