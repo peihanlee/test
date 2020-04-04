@@ -65,26 +65,26 @@ class Solution {
 public:
     stack<TreeNode *> st;
 
-    void searchLeft(TreeNode *node){
-      while(node != NULL){
-        st.push(node);
-        node = node->left;
+    int searchK(TreeNode *node, int k, int &val){
+
+      if(node != NULL && k >0)
+      {
+        k = searchK(node->left, k, val);
+        k--;
+        if(k==0){
+          val = node->val;          
+        } else {
+          k = searchK(node->right, k, val);        
+        }
       }
+      return k;   
     }
 
     int kthSmallest(TreeNode* root, int k) {
-      TreeNode *res;
-      searchLeft(root);
+      int val = 0;
+      searchK(root, k, val);
       
-      while(k>0){
-        res = st.top();
-        st.pop();
-        searchLeft(res->right);
-        k--;
-    
-      }
-
-      return res->val;
+      return val;
         
     }
 };
