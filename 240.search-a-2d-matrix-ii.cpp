@@ -53,7 +53,8 @@ public:
       while(i<m && j>=0){
         if(matrix[i][j]==target){
           return true;
-        }else if((i+1<m) && matrix[i+1][j]<=target){
+        }
+        if(matrix[i][j]<target){
           i++;
         }else{
           j--;
