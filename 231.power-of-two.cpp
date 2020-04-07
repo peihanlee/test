@@ -42,7 +42,9 @@
 class Solution {
 public:
     bool isPowerOfTwo(int n) {
+#if 0
 
+#else      
       if(n>0){
         if(n==1)
           return true;
@@ -59,6 +61,7 @@ public:
       } else {
         return false;
       }
+#endif      
     }
 };
 // @lc code=end
