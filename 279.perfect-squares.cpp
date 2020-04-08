@@ -51,6 +51,7 @@ public:
       }
     }
     int numSquares(int n) {
+      //unordered_map<int, int> dp;
       static unordered_map<int, int> dp;
 
       return DFS(n,dp);        
