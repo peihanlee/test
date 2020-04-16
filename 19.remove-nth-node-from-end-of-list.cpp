@@ -70,6 +70,7 @@ public:
           end=end->next;
         }
         pre_start->next=start->next;
+        delete start;
       }
       return head; 
     }
