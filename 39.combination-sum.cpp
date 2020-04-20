@@ -62,7 +62,6 @@ public:
 
       if(sum==target){
         result.push_back(combine);
-        cout<<"Found!!"<<"\n";
         return;
       }
 
@@ -70,11 +69,9 @@ public:
         return;
       }
 
-      cout<<"push:"<<candidates[step]<<"\n";
       combine.push_back(candidates[step]);
       checkCombination(result, combine, sum+candidates[step], step, step_end, candidates, target);
       combine.pop_back();
-      cout<<"pop:"<<candidates[step]<<"\n";
 
       checkCombination(result, combine, sum, step+1, step_end, candidates, target);
     }
