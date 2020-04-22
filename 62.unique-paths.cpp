@@ -59,26 +59,16 @@
 // @lc code=start
 class Solution {
 public:
-    unordered_map<string,int> cache;
 
     int uniquePaths(int m, int n) {
-      int result;
-      if(cache.find(to_string(m)+"x"+to_string(n))!=cache.end()){
-        return cache[to_string(m)+"x"+to_string(n)];
+      vector<vector<int>> dp(n,vector<int>(m,1));
+
+      for(int i=1;i<n;i++){
+        for(int j=1;j<m;j++){
+          dp[i][j]=dp[i-1][j]+dp[i][j-1];
+        }
       }
-
-      if(m==1 && n==1){
-        result=1;
-      }else if(m==1){
-        result=uniquePaths(m,n-1);
-      }else if(n==1){
-        result=uniquePaths(m-1,n);
-      }else{
-        result=uniquePaths(m,n-1)+uniquePaths(m-1,n);
-      }        
-      cache[to_string(m)+"x"+to_string(n)] = result;
-      return result;
-
+      return dp[n-1][m-1];
     }
 };
 // @lc code=end
