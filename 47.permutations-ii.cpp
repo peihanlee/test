@@ -33,42 +33,32 @@
 // @lc code=start
 class Solution {
 public:
-    vector<vector<int>> permuteUnique(vector<int>& nums) {
-      vector<vector<int>> result;
-      vector<int> start=nums;
+    vector<int> findNext(vector<int>& nums){
       int n=nums.size();
-      int i=n-2;
-
-      result.push_back(start);
-      while(i>=0){
-        for(i=n-2;i>=0;i--){
-          if(nums[i+1]>nums[i]){
-            sort(nums.begin()+i+1,nums.end());
-            for(int j=i+1;j<n;j++){
-              if(nums[j]>nums[i]){
-                swap(nums[j], nums[i]);
-                if(start!=nums){
-                  result.push_back(nums);
-                }else{
-                  return result;
-                }
-                break;
-              }
+      for(int i=n-2;i>=0;i--){
+        if(nums[i+1]>nums[i]){
+          sort(nums.begin()+i+1,nums.end());
+          for(int j=i+1;j<n;j++){
+            if(nums[j]>nums[i]){
+              swap(nums[j], nums[i]);
+              return nums;
             }
-            break;
-          }
-        }
-        if(i<0){
-          sort(nums.begin(),nums.end());
-          if(start!=nums){
-            result.push_back(nums);
-            i=n-2;
-          }
-          else{
-            cout<<"found start!!\n";
           }
         }
       }
+      sort(nums.begin(),nums.end());
+      return nums;
+    }
+
+    vector<vector<int>> permuteUnique(vector<int>& nums) {
+      vector<vector<int>> result;
+      vector<int> start=nums;
+
+      do{
+          result.push_back(nums);
+          nums=findNext(nums);
+      }
+      while(nums!=start);
       return result;  
     }
 };
