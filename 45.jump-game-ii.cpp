@@ -45,6 +45,7 @@ public:
       int n=nums.size();
       int step=0;
 
+      //You can assume that you can always reach the last index.
       while(end<n-1){
         step++;
         for(int i=start;i<=end;i++){
