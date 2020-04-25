@@ -44,6 +44,7 @@
 class Solution {
 public:
     ListNode* deleteDuplicates(ListNode* head) {
+#if 0      
       ListNode *comNode = head;
       ListNode *curNode = head;
       int i=0;
@@ -65,6 +66,13 @@ public:
       }
 
       return head;     
+#else
+      if(head && (head->next=deleteDuplicates(head->next)) && head->next && head->val==head->next->val){
+        return head->next;
+      }else{
+        return head;
+      }
+#endif      
     }
 };
 // @lc code=end
