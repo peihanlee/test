@@ -67,7 +67,7 @@ public:
 
       return head;     
 #else
-      if(head && (head->next=deleteDuplicates(head->next)) && head->next && head->val==head->next->val){
+      if(head && (head->next=deleteDuplicates(head->next)) && head->val==head->next->val){
         return head->next;
       }else{
         return head;
