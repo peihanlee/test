@@ -56,12 +56,6 @@ public:
       int n=nums.size();
       int index=0;
       generateList(result, nums, list, index, n);
-/*
-      generateList(result, nums, list, index+1, n);
-      list.push_back(nums[index]);
-      generateList(result, nums, list, index+1, n);
-      list.pop_back();
-*/
       return result;
     }
 };
