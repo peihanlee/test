@@ -84,11 +84,9 @@ public:
       slow=head;
 
       while(fast && fast->next){
-        cout<<"slow:"<<slow->val<<" fast:"<<fast->val<<"\n";
         slow = slow->next;
         fast = fast->next->next;
         if(slow==fast){
-          cout<<"match A:"<<fast->val<<"\n";
           break;
         }
       }
@@ -99,7 +97,6 @@ public:
           fast=fast->next;
           slow=slow->next;
         }
-        cout<<"match B:"<<fast->val<<"\n";
         return fast;
       }
 
