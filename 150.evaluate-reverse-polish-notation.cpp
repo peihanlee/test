@@ -104,7 +104,7 @@ public:
           sum=stoi(tokens[i],NULL,0);
           st.push(sum);
         }
-        cout<<"push:"<<sum<<"\n";
+        //cout<<"push:"<<sum<<"\n";
       }
       sum=st.top();
       st.pop();
