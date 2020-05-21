@@ -36,12 +36,8 @@ public:
     int rangeBitwiseAnd(int m, int n) {
       unsigned int mask = INT_MAX;
 
-      cout<<"mask&m:"<<to_string(mask&m)<<"\n";
-      cout<<"mask&n:"<<to_string(mask&n)<<"\n";
-      //while((unsigned int)(mask&m) != (unsigned int)(mask&n)){
       while((mask&m) != (mask&n)){
         mask = mask<<1;
-        cout<<"mask:"<<mask<<"\n";
       }
 
       return mask&m;        
