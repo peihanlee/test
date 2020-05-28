@@ -55,11 +55,7 @@
 // @lc code=start
 class Solution {
 public:
-    void checkCombination(vector<vector<int>> &result, vector<int> &combine, int sum, int step, int step_end, vector<int> candidates, int target){
-      if(step>=step_end){
-        return;
-      }
-
+    void checkCombination(vector<vector<int>> &result, vector<int> &combine, int sum, int idx, int n, vector<int> candidates, int target){
       if(sum==target){
         result.push_back(combine);
         return;
@@ -69,17 +65,18 @@ public:
         return;
       }
 
-      combine.push_back(candidates[step]);
-      checkCombination(result, combine, sum+candidates[step], step, step_end, candidates, target);
-      combine.pop_back();
-
-      checkCombination(result, combine, sum, step+1, step_end, candidates, target);
+      for(int i=idx;i<n;i++){
+        combine.push_back(candidates[i]);
+        checkCombination(result, combine, sum+candidates[i], i, n, candidates, target);     
+        combine.pop_back();
+      }
     }
     vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
       vector<int> combine;
       vector<vector<int>> result;
 
-      checkCombination(result, combine, 0, 0, candidates.size(), candidates, target);     
+      int n=candidates.size();
+      checkCombination(result, combine, 0, 0, n, candidates, target);     
       return result; 
     }
 };
