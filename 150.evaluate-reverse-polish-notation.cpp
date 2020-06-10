@@ -101,7 +101,8 @@ public:
               st.push(sum);
           }
         }else{
-          sum=stoi(tokens[i],NULL,0);
+          //sum=stoi(tokens[i],NULL,0);
+          sum=stoi(tokens[i]);
           st.push(sum);
         }
         //cout<<"push:"<<sum<<"\n";
