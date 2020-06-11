@@ -51,6 +51,7 @@
  */
 class Solution {
 public:
+#if 0  
     void bfs(vector<vector<int>>& res, vector<TreeNode *> nodes){
       vector<TreeNode *> next_nodes;
       vector<int> vals;
@@ -78,6 +79,31 @@ public:
       }
       nodes.push_back(root);
       bfs(res, nodes);
+      return res;
+    }
+#endif
+
+    vector<vector<int>> levelOrder(TreeNode* root) {
+      vector<vector<int>> res;
+      queue<TreeNode*> q;
+
+      if(!root){
+        return res;
+      }
+      q.push(root);
+      while(!q.empty()){
+        vector<int> v;
+        TreeNode* tmp = NULL;
+        int n=q.size();
+        for(int i=0;i<n;i++){
+          tmp=q.front();
+          q.pop();
+          v.push_back(tmp->val);
+          if(tmp->left) q.push(tmp->left);
+          if(tmp->right) q.push(tmp->right);
+        }
+        res.push_back(v);
+      }
       return res;
     }
 };
