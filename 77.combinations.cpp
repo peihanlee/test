@@ -52,10 +52,13 @@ public:
       int index=1;
 
       if(k>0 && n>=k){
+        generateList(result,nums,index,n,k);
+        /*
         generateList(result,nums,index+1,n,k);
         nums.push_back(index);
         generateList(result,nums,index+1,n,k-1);        
         nums.pop_back();
+        */
       }
       return result;
     }
