@@ -64,7 +64,6 @@ public:
         }
         ret.push_back(lastNode->val);
         n = nodeQueue.size();
-        cout<<"n:"<<n<<"\n";
       }
 
       return ret;
