@@ -107,7 +107,11 @@ public:
       }
       */
 
-      return ret.size()==numCourses?ret:vector<int>();        
+      if(ret.size()==numCourses){
+        return ret;
+      }else{
+        return {};
+      }       
     }
 };
 // @lc code=end
