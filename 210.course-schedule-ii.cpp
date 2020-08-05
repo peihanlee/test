@@ -66,7 +66,6 @@ public:
       int n=prerequisites.size();
 
       for(int i=0;i<n;i++){
-        //cout<<prerequisites[i].front()<<" need "<<prerequisites[i].back()<<"\n";
         course_list[prerequisites[i].front()].push_back(prerequisites[i].back());
       }
 
@@ -78,14 +77,11 @@ public:
 
       while(!cq.empty()){
         int c=cq.front();
-        //cout<<"C:"<<c<<"\n";
         ret.push_back(c);
         cq.pop();
         for(int i=0;i<numCourses;i++){
           int m=course_list[i].size();
-          //cout<<"size:"<<m<<"\n";
           for(int j=m-1;j>=0;j--){
-            //cout<<"Multu C:"<<i<<"\n";
             if(course_list[i][j]==c){
               course_list[i].erase(course_list[i].begin()+j);
             }
@@ -95,17 +91,6 @@ public:
           }
         }
       }
-      /*
-      for(int i=0;i<numCourses;i++){
-        cout<<"size:"<<course_list[i].size()<<"\n";
-        course_list[i].push_back(i);
-      }
-
-      for(int i=0;i<numCourses;i++){
-        cout<<"Next size :"<<course_list[i].size()<<"\n";
-        course_list[i].push_back(i);
-      }
-      */
 
       if(ret.size()==numCourses){
         return ret;
