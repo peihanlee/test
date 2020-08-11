@@ -83,13 +83,11 @@ public:
       Node *cur=root;
       int size=word.size();
       if(size==0) return;
-      //cout<<"\n*************** add:["<<word<<"]\n";
       for(int i=0; i<size;i++){
         if(cur->next[word[i]-'a'] == NULL){
           cur->next[word[i]-'a'] = new Node();
         }
         cur=cur->next[word[i]-'a'];
-        //cout<<"addr:"<<cur<<"\n";
       }
       cur->isWord=true;        
     }
@@ -98,40 +96,20 @@ public:
       int size=word.size();
       for(int i=0; i<size;i++){
         if(word[i]=='.'){
-          //cout<<"found '.'\n";
-          //if(i==size-1){
-          //  for(int j=0;j<26;j++){
-          //    if(cur->next[j]!=NULL){
-          //      return true;
-          //    }
-          //  }
-            //return cur->isWord;
-          //}else {
-            for(int j=0;j<26;j++){
-              if(cur->next[j]!=NULL){
-                if(searchSubstring(cur->next[j],word.substr(i+1,size-i-1))){
-                  return true;
-                }
+          for(int j=0;j<26;j++){
+            if(cur->next[j]!=NULL){
+              if(searchSubstring(cur->next[j],word.substr(i+1,size-i-1))){
+                return true;
               }
             }
-            return false;
-          //}
+          }
+          return false;
         }else if(cur->next[word[i]-'a']!=NULL){
-          //cout<<"found '"<<word[i]<<"'\n";
-          //if(i==size-1){
-          //  cout<<"return:"<<cur->isWord<<"\n";
-          //  return cur->next[word[i]-'a']->isWord;
-          //}else{
           cur=cur->next[word[i]-'a'];
-          //cout<<"addr:"<<cur<<"\n";
-          //}
         }else{
-          //cout<<"No found\n";
           return false;
         }
       }        
-      //return false;
-      //cout<<"End return:"<<cur->isWord<<"\n";
       return cur->isWord;
     }
 
@@ -140,7 +118,6 @@ public:
       Node *cur=root;
       int size=word.size();
       if(size==0) return false;
-      //cout<<"\n*************** search:["<<word<<"]\n";
       return searchSubstring(cur, word);
     }
 };
