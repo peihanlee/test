@@ -97,10 +97,8 @@ public:
       for(int i=0; i<size;i++){
         if(word[i]=='.'){
           for(int j=0;j<26;j++){
-            if(cur->next[j]!=NULL){
-              if(searchSubstring(cur->next[j],word.substr(i+1,size-i-1))){
-                return true;
-              }
+            if(cur->next[j]!=NULL && searchSubstring(cur->next[j],word.substr(i+1,size-i-1))){
+              return true;
             }
           }
           return false;
