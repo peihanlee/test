@@ -64,8 +64,6 @@ public:
     void searchWord(vector<vector<char>>& board, int x, int y, int n, int m, vector<vector<bool>>& visit, struct Node *root, vector<string>& res){
       if(visit[m][n]==true || root->next[board[m][n]-'a']==NULL){
         return;
-      }else{
-        cout<<"("<<n<<","<<m<<"):"<<board[m][n]<<"\n";
       }
 
       visit[m][n]=true;
@@ -89,13 +87,11 @@ public:
         searchWord(board, x, y, n+1, m, visit, root, res); 
       }
       visit[m][n]=false;
-      //cout<<"T0\n";
     }
 
     void search(vector<vector<char>>& board, int x, int y, vector<vector<bool>>& visit, struct Node *root, vector<string>& res){
       for(int m=0; m<y ; m++) {
         for(int n=0;n<x;n++) {
-          //cout<<"Start *** ("<<n<<","<<m<<") ***\n";
           searchWord(board, x, y, n, m, visit, root, res);
         }
       }
