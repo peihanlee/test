@@ -48,19 +48,19 @@
 class Solution {
 public:
     int rob(vector<int>& nums) {
-      int n=nums.size();
-      int rob_max=0;
-      int notRob_max=0;
-      if(n<1){
-        return 0;
+      if(!nums.size()) return 0;
+      int noRobMax = 0;
+      int yesRobMax = 0;
+      
+      for(int i=0; i<nums.size(); i++){
+        int pre_noRobMax = noRobMax;
+        int pre_yesRobMax = yesRobMax;
+
+        yesRobMax = pre_noRobMax + nums[i];
+        noRobMax = max(pre_noRobMax, pre_yesRobMax);
       }
-      for(int i=0;i<n;i++){
-        int preRob_max=rob_max;
-        int preNotRob_max=notRob_max;
-        rob_max = preNotRob_max+nums[i];
-        notRob_max = max(preRob_max, preNotRob_max);
-      }
-      return max(rob_max,notRob_max);
+
+      return max(yesRobMax,noRobMax);
     }
 };
 // @lc code=end
