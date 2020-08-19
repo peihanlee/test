@@ -48,11 +48,8 @@ public:
             tmp = min(dp[i+1][j],dp[i][j+1]);
             dp[i+1][j+1]=min(dp[i][j],tmp)+1;
             max_area=max(max_area,dp[i+1][j+1]);
-            //cout<<"("<<i<<","<<j<<")";
           }
-          cout<<max_area<<" ";
         }
-        cout<<"\n";
       }
       return max_area*max_area;
     }
