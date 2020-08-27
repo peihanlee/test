@@ -38,16 +38,20 @@
 class Solution {
 public:
     int majorityElement(vector<int>& nums) {
-      unordered_map<int,int> mp;
+      int a=0;
+      int cnt_a=0;
       int n=nums.size();
 
       for(int i=0;i<n;i++){
-        mp[nums[i]]++;
-        if(mp[nums[i]]>n/2){
-          return nums[i];
+        if(cnt_a==0){
+          a=nums[i]; cnt_a++;
+        }else if(a==nums[i]){
+          cnt_a++;
+        }else{
+          cnt_a--;
         }
       }
-      return 0;        
+      return a;  //Always exist!        
     }
 };
 // @lc code=end
